@@ -1,0 +1,88 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    color: black;
+    display: flex;
+    justify-content: center;
+
+    .main-conatainer{
+        
+        .header-container{
+            display: flex;
+            justify-content: center;
+            height: 44 px;
+        
+            .header{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 844px;
+                background-color: aliceblue;
+                .title{
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        .package-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 844px;
+            min-height: 100vh;
+            background-color: aliceblue;
+    
+        }
+        .package{
+            max-width: 500x;
+            max-width: 500px;
+            background-color: white;
+            margin-bottom: 30px;
+            
+            .read-or-hide{
+                color: blue;
+            }
+            .image-container{
+                width: 500px;
+                height: 300px;
+                img{
+                    width: 500px;
+                    height: 300px;
+                }
+            }
+            .package-detail{
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+
+                .price{
+                   h4{
+                       font-weight: bold;
+                       background-color: aquamarine;
+                       color: crimson;
+                   }
+                }
+            }
+
+            .package-info{
+                padding: 0 20px;
+            }
+            .interest-btn{
+                display: flex;
+                justify-content: center;
+                padding-bottom: 10px;
+                
+                .hide-btn{
+                    background-color: lightblue;
+                    color: darkblue;
+                    border: 1px lightblue;
+                }
+            }
+        }
+    }
+
+    
+  }
