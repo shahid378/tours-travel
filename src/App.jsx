@@ -4,11 +4,12 @@ import Content from './component/Content';
 import "./Css.scss";
 
 
-const App = () => {
+const App = () => {   
+
     return (
         <div className="main-conatainer">
-            <Header />
-            <Content />
+            <Header></Header>
+            <Content></Content>
         </div>
     )
 };
