@@ -1,14 +1,29 @@
 import React from "react";
 import { useState } from "react";
 
+const ReadMore = ({ children }) => {
+    const text = children;
+    const [isReadMore, setIsReadMore] = useState(true);
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+    return (
+      <p className="text">
+        {isReadMore ? text.slice(0, 150) : text}
+        <span onClick={toggleReadMore} className="read-or-hide">
+          {isReadMore ? "...read more" : " show less"}
+        </span>
+      </p>
+    );
+  };
+
 const Package = (props) => {
     const [visibility, setvisibility] = useState(true);
     const mypackage = props.data;
    
     return mypackage.slice()
         .map((dataObject, i) => {
-            return (
-                
+            return (                
                 <div className="package">
                     <div className="image-container">
                         <img src={dataObject.dp} alt="Paris" />
@@ -22,7 +37,7 @@ const Package = (props) => {
                         </div>
                     </div>
                     <div className="package-info">
-                        <p>{dataObject.description}</p>
+                        <ReadMore>{dataObject.description}</ReadMore>
                     </div>
                     <div className="interest-btn">
                         <button
