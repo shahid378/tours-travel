@@ -22,7 +22,10 @@ const ReadMore = ({ children }) => {
 //package data
 
 const Packages = (props) => {
-    const [visibility, setVisibility] = useState(true);
+    const setVisibility = (i) => {
+        packages[i].visible = "false";
+        setPackages(packages);
+    }
     const [packages, setPackages] = useState(props.data);
     const [pageNumber, setPageNumber] = useState(0);
 
@@ -30,8 +33,9 @@ const Packages = (props) => {
     const pagesVisited = pageNumber * packagePerPage;
 
     const displayPackages = packages
+        .filter(mypackage => mypackage.visible === true)
         .slice(pagesVisited, pagesVisited + packagePerPage)
-        .map((tourPackage) => {
+        .map((tourPackage,i) => {
             return (
                 <div className="package">
                     <div className="image-container">
@@ -52,7 +56,7 @@ const Packages = (props) => {
                         <button
                             className="hide-btn"
                             onClick={() => {
-                                setVisibility(false);
+                                setVisibility(i);
                             }}
                         >
                             {tourPackage.action}
