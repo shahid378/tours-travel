@@ -44,6 +44,7 @@ body {
             
             .read-or-hide{
                 color: blue;
+                cursor: pointer;
             }
             .image-container{
                 width: 500px;
@@ -79,6 +80,7 @@ body {
                     background-color: lightblue;
                     color: darkblue;
                     border: 1px lightblue;
+                    cursor: pointer;
                 }
             }
         }

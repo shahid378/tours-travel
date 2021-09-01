@@ -22,22 +22,36 @@ const ReadMore = ({ children }) => {
 //package data
 
 const Packages = (props) => {
-    const setVisibility = (i) => {
-        packages[i].visible = "false";
-        setPackages(packages);
-    }
+
     const [packages, setPackages] = useState(props.data);
     const [pageNumber, setPageNumber] = useState(0);
 
     const packagePerPage = 5;
     const pagesVisited = pageNumber * packagePerPage;
 
+    const remove = (i) => {
+        let my_packages = [...packages]
+        saveRemovedItemsInStorage(my_packages[i].title);
+        my_packages.splice(i, 1);
+        setPackages(my_packages);
+    }       
+
+    const saveRemovedItemsInStorage = (removed_package) => {
+        let items_removed = localStorage.getItem("items_removed");
+        if (items_removed) {
+            items_removed = JSON.parse(items_removed);
+        } else {
+            items_removed = [];
+        }
+        items_removed.push(removed_package);
+        localStorage.setItem("items_removed", JSON.stringify(items_removed));
+    }
+
     const displayPackages = packages
-        .filter(mypackage => mypackage.visible === true)
         .slice(pagesVisited, pagesVisited + packagePerPage)
-        .map((tourPackage,i) => {
+        .map((tourPackage, i) => {
             return (
-                <div className="package">
+                <div key={i} className="package">
                     <div className="image-container">
                         <img src={tourPackage.dp} alt="Paris" />
                     </div>
@@ -56,7 +70,7 @@ const Packages = (props) => {
                         <button
                             className="hide-btn"
                             onClick={() => {
-                                setVisibility(i);
+                                remove(i);
                             }}
                         >
                             {tourPackage.action}
@@ -83,7 +97,7 @@ const Packages = (props) => {
                 previousLinkClassName={"prevBtn"}
                 nextLinkClassName={"nextBtn"}
                 disabledClassName={"paginationDisabled"}
-                activeClassName={"paginationActive" }
+                activeClassName={"paginationActive"}
             />
         </div>
     )

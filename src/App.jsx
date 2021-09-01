@@ -3,7 +3,8 @@ import Header from './component/Header';
 import Content from './component/Content';
 import "./Css.scss";
 
-
+// cleaning up before initializing 
+localStorage.clear();
 const App = () => {   
 
     return (
