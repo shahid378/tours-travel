@@ -1,11 +1,11 @@
 import React from 'react';
 import data from './Data';
-import Package from './Packages';
+import Packages from './Packages';
 
-const Content = () => {    
+const Content = () => {
     return (
-        <div className="package-container">
-            <Package data={data }/> 
+        <div className="packages-container">
+            <Packages data={data }/> 
         </div>
     );
 }
